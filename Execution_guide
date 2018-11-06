@@ -1,0 +1,73 @@
+This project is enhanced with Hybrid POM framework.
+How to execute:
+
+Go to testng.xml page under HelloFreshWebTest project folder. After opening right click into it and Run as TestNGsuite.
+ 
+ Post execution of test- Refresh HelloFreshWebTest project folder so result with latest date & timestamp will be displyed under report folder. 
+ Right click to that recent result html file, go to properties & copy location and paste it into Chrome so result view displayed.
+ 
+ 
+ExtentReports is used for reporting purpose. Post execution refres project folder so latest report will be seen under reports folder
+
+Note- Please check reports folder of previous executions for reference
+There is one failed testcase added purposefully in VerifySignIn testscenario which is handled so dont touch any browser during execution of this
+as it is handled in script.
+
+
+
+
+Tests:
+basetest pacakge:
+BaseTest:
+BaseTest class contains all common keywords which is extended in all other classes.
+
+XlsReader:
+This class is copied imported into package inorder to work on xls common methods.
+
+Util package:
+DataReader:
+This class is having methods to iterate with TestData.xls which is use for passing testdata into test.
+In this class getcellData is used which is from xlsReader class.
+
+ExtentManager:
+This class singleton object is created for reports object.
+The name of report is intialize with date & timestamp in this class.
+
+Challenge package:
+
+VerifyLoginIn:
+This class is having both pass & failed scenarios for existing user login verification.
+Two users data is passed from HelloFresh_TestData.xls/TestData sheet with Runmode as Y for both.
+
+CheckOutTest:
+This class extending basetest class as using all common keywords. All existing user checkout order completion steps are automated here.
+
+SignInTest:
+This class is for new user registration where new user data is passed from TestData.xls sheet and verifying registration complete step.
+
+
+TestData:
+TestData folder contains excelsheet which is having all test data for all 3 scenarios.
+Suite sheet contains all test scenarios.
+TestData sheet contains all tests with prerequisite test data.
+We can control RunMode on test level in testdata sheet as well as on suite level on test scenario sheet.
+If Suite having any test scenario has RunMode = N then that test scenario won;t get execute even test has declared Y on testData sheet for that scenario.
+Browser configuration can be changed from TestData sheet so we can configure IE/Chrome/FF here in TestData sheet.
+
+config.properties 
+This file holds all locator details used in entire test.
+
+Execution step:
+testng.xml is present inside HelloFreshWebTest folder.
+Right click on it and execute as testNG.
+All test scenarios will be executed.
+
+Reports:
+Execution results will be automatically gets created here post execution.
+We need to click on properties of the latest report based on date & timestamp, Copy location path
+and in chrome paste it. Result will be displayed
+
+Extentreport is used for reporting purpose & capture screenshot method is use to capure all screenshot wherever required.
+
+ 
+
